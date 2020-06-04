@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { firestoreConnect } from 'react-redux-firebase';
 import { startUi } from './ui';
+import {
+    Card,
+    CardBody,
+    CardGroup,
+    Row,
+    Col,
+    Container,
+    Form,
+} from 'reactstrap';
+import { CardHeader } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 
 class LoginPhone extends Component {
 
@@ -9,7 +20,7 @@ class LoginPhone extends Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         startUi('#firebaseui');
     }
     login = () => {
@@ -20,11 +31,34 @@ class LoginPhone extends Component {
 
     render() {
         return (
-            <div >
-                <div id="recaptcha-container"></div>
-                <h1>Iniciar Sesion</h1>
-                <div id='firebaseui'></div>
-            </div>
+            // eslint-disable-next-line react/style-prop-object
+            <div className="bg-dark" >
+                <div className="app flex-row align-items-center">
+                    <Container >
+                        <Row className=" justify-content-center align-items-center vh-100">
+                            <Col md="4">
+                                <CardGroup>
+                                    <Card className="p-4">
+                                        <CardBody>
+                                            <Form>
+                                                <p className="text-center"><b>CHOOSE HOW TO SIGN IN</b></p>
+                                                <br/>
+                                                <div id="recaptcha-container"></div>
+                                                <div id='firebaseui'></div>
+                                            </Form>
+                                            {/*<br/>
+                                             <p>You don't have any account 
+                                                <NavLink to="/register">Sign Up</NavLink>
+                                            </p> */}
+                                        </CardBody>
+
+                                    </Card>
+                                </CardGroup>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+            </div >
         )
     }
 }
