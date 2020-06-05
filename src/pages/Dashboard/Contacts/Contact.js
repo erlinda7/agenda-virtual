@@ -87,9 +87,9 @@ class Contact extends Component {
       contacts,
       editMode,
     } = this.state;
-    const { firestore, match, userId } = this.props;
+    const { firestore, match } = this.props;
     const contactId = match.params.id;
-    const idUser = userId;
+    const idUser = this.props.firebase.auth().currentUser.uid;
     if (editMode) {
       firestore.update(
         { collection: 'contacts', doc: contactId },
@@ -279,6 +279,7 @@ class Contact extends Component {
 Contact.defaultProps = {
   contacts: {},
   firestore: {},
+  firebase: {},
   history: {},
   match: {},
 };
@@ -287,6 +288,7 @@ Contact.propTypes = {
   history: PropTypes.func,
   match: PropTypes.func,
   firestore: PropTypes.shape(),
+  firebase: PropTypes.shape(),
 };
 
 export default compose(

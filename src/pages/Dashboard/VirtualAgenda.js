@@ -1,11 +1,15 @@
 import React from "react";
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
 import NavBarVirtual from "./NavBarVirtual";
 import ContainerVirtual from "./ContainerVirtual";
+import firebase from '../../config/firebaseConfig';
 
-class Page extends React.Component {
+class VirtualAgenda extends React.Component {
     render() {
         console.log('props virtual', this.props);
-        
+
         return (
             <div>
                 <NavBarVirtual />
@@ -15,4 +19,5 @@ class Page extends React.Component {
     }
 }
 
-export default Page;
+export default VirtualAgenda;
+

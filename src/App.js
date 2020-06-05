@@ -15,16 +15,21 @@ class App extends Component {
     return (
       <div >
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" render={props => <Login {...props} />} />
+          {
+            this.props.auth.isEmpty
+              ?
+              <Switch>
+                <Route exact path="/" render={props => <Home {...props} />} />
+                <Route exact path="/login" render={props => <Login {...props} />} />
+              </Switch>
+              :
+              <Switch>
+                <Route exact path="/dashboard" render={props => <VirtualAgenda {...props} />} />
 
-            <Route exact path="/dashboard" render={props => <VirtualAgenda {...props}  />} />
-
-            <Route path="/contacts/:id" render={props => <Contact {...props} userId="t4Tjfc1jyio4RMxEAq5y"/>} />
-
-            {/* <Route exact path="/contacts" render={props => <VirtualAgenda {...props}/>} /> */}
-          </Switch>
+                <Route path="/contacts/:id" render={props => <Contact {...props} />} />
+              </Switch>
+          }
+          {/* <Route exact path="/contacts" render={props => <VirtualAgenda {...props}/>} /> */}
         </BrowserRouter>
       </div >
     );
