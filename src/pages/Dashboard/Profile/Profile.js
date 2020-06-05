@@ -116,9 +116,10 @@ class Profile extends Component {
       width: '100%',
       height: 200,
       objectFit: 'contain',
-      
+
     };
 
+   // const photo = users ? users.photo : "https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/users%2Fphotos%2Felsa.jpg?alt=media&token=24f74390-4cf8-40ff-83a3-368778be42f3";
 
     // className="rounded-circle"
     return (
@@ -126,7 +127,7 @@ class Profile extends Component {
         <Row className="justify-content-center">
           <Col xs="12" className="justify-content-center">
             <br />
-              <img style={bannerStyle} src={users.photo} alt="photo"  />
+            <img style={bannerStyle} src={users.photo} alt="photo" />
           </Col>
         </Row>
         <Row>

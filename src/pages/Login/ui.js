@@ -3,9 +3,9 @@ import * as firebaseui from 'firebaseui'
 let uiConfig = {
   callbacks: {
     signInSuccess: function (currentUser, credential, redirectUrl) {
-      console.log('currentUser', currentUser);
-      console.log('credential', credential);
-      console.log('redirectUrl', redirectUrl);      
+      // console.log('currentUser', currentUser);
+      // console.log('credential', credential);
+      // console.log('redirectUrl', redirectUrl);      
       return true;
     },
     uiShown: function () {
@@ -13,7 +13,7 @@ let uiConfig = {
     }
   },
   signInFlow: 'popup',
-  //signInSuccessUrl: '/dashboard',
+  signInSuccessUrl: '/dashboard',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     {

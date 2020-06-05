@@ -72,7 +72,7 @@ export default function ContanierVirtual(props) {
   };
   const font = {
     fontSize: 14,
-    marginLeft:10,
+    textAlign:'center'
   }
 
   return (
