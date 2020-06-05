@@ -62,15 +62,32 @@ export default function ContanierVirtual(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  
+
+  const bannerStyle = {
+    marginBottom: 20,
+    marginLeft: 30,
+    width: 100,
+    height: 100,
+    //objectFit: 'contain',
+  };
+  const font = {
+    fontSize: 14,
+    marginLeft:10,
+  }
+
   return (
     <div>
-      <div>
-        <h1>Photo</h1>
-        <h1>Name</h1>
-      </div>
+
       <div className={classes.root}>
         <div className="justify-content-left  align-items-left">
+          <br />
+          <Tabs>
+            <div>
+              <img style={bannerStyle} src={props.photoUsers} alt="photo" className="rounded-circle" />
+              <p style={font}>{props.nameUsers}</p>
+            </div>
+          </Tabs>
+          <br />
           <Tabs
             orientation="vertical"
             variant="scrollable"
@@ -89,7 +106,7 @@ export default function ContanierVirtual(props) {
 
           <div>
             <TabPanel value={value} index={0}>
-              <Profile  />
+              <Profile />
             </TabPanel>
             <TabPanel value={value} index={1}>
 

@@ -13,6 +13,8 @@ class VirtualAgenda extends Component {
     this.state = {
       currentUser: false,
       users: false,
+      nameUsers:false,
+      photoUsers:false,
       control: true,
     }
   }
@@ -26,22 +28,23 @@ class VirtualAgenda extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     let update = false;
-    let { users, currentUser } = prevState;
+    let { users, currentUser, nameUsers, photoUsers } = prevState;
     if (nextProps.users && Object.keys(nextProps.users).length !== 0 && !users) {
       let user = nextProps.users.filter((item) => item.id === currentUser.uid);
       if (user.length !== 0) {
-        //console.log('trueeeee');
         users = 'exists';
+        nameUsers = user[0].name;
+        photoUsers = user[0].photo;
       } else {
         users = 'notExists';
-
       }
-      // users = user[0];
       update = true;
     }
     if (update) {
       return {
         users,
+        nameUsers,
+        photoUsers,
       };
     } return null;
   }
@@ -90,11 +93,13 @@ class VirtualAgenda extends Component {
   }
 
   render() {
-    const { currentUser } = this.state;
+    console.log('name',this.state.nameUsers);
+    console.log('photo',this.state.photoUsers);
+    const {nameUsers, photoUsers} = this.state;
     return (
       <div>
         <NavBarVirtual />
-        <ContainerVirtual />
+        <ContainerVirtual nameUsers={nameUsers} photoUsers={photoUsers}/>
       </div>
     )
   }
