@@ -5,11 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { NavLink, useRouteMatch } from 'react-router-dom';
 import Contacts from './Contacts/Contacts';
 import Profile from './Profile/Profile';
-import Contact from './Contacts/Contact';
-import { Redirect, Route, Switch } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,14 +55,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ContanierVirtual() {
+export default function ContanierVirtual(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  
   return (
     <div>
       <div>
@@ -86,16 +83,13 @@ export default function ContanierVirtual() {
             <Tab label="Contacts" {...a11yProps(1)} />
             <Tab label="blocked" {...a11yProps(2)} />
             <Tab label="User List" {...a11yProps(3)} />
-            {/* <Tab label="Item Five" {...a11yProps(4)} />
-                    <Tab label="Item Six" {...a11yProps(5)} />
-                    <Tab label="Item Seven" {...a11yProps(6)} /> */}
           </Tabs>
         </div>
         <div>
 
           <div>
             <TabPanel value={value} index={0}>
-              <Profile userId="t4Tjfc1jyio4RMxEAq5y"/>
+              <Profile  />
             </TabPanel>
             <TabPanel value={value} index={1}>
 
@@ -107,23 +101,9 @@ export default function ContanierVirtual() {
             <TabPanel value={value} index={3}>
               List of users who have you added
                 </TabPanel>
-            {/* <TabPanel value={value} index={4}>
-                    Item Five
-                </TabPanel>
-                <TabPanel value={value} index={5}>
-                    Item Six
-                </TabPanel>
-                <TabPanel value={value} index={6}>
-                    Item Seven
-                </TabPanel> */}
           </div>
         </div>
       </div>
-      {/* <Switch>
-                <Route exact path="/dashboard/dashboard/:id" >
-                    <Contact />
-                </Route>
-            </Switch> */}
     </div >
   );
 }

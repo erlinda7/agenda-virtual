@@ -23,7 +23,7 @@ class Profile extends Component {
     this.state = {
       users: false,
       usersProps: false,
-      idUser: this.props.userId,
+      idUser: this.props.firebase.auth().currentUser.uid,
       upload: true,
     };
   }
@@ -116,13 +116,17 @@ class Profile extends Component {
       width: '100%',
       height: 200,
       objectFit: 'contain',
+      
     };
+
+
+    // className="rounded-circle"
     return (
       <div className="animated fadeIn">
         <Row className="justify-content-center">
           <Col xs="12" className="justify-content-center">
             <br />
-            <img style={bannerStyle} src={users.photo} alt="photo" />
+              <img style={bannerStyle} src={users.photo} alt="photo"  />
           </Col>
         </Row>
         <Row>
