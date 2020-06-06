@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -45,13 +47,12 @@ class Profile extends Component {
   }
 
   handleUpload = (e) => {
-    //canUpload(false);
-    const { users } = this.state;
+    const { users, idUser } = this.state;
     this.setState({ upload: false });
     const image = e;
     const storage = this.props.firebase.storage();
     const uploadTask = storage
-      .ref(`users/photos/${image.name}`)
+      .ref(`usersPhotos/${idUser}/${image.name}`)
       .put(image);
     uploadTask.on(
       'state_changed',
@@ -69,7 +70,7 @@ class Profile extends Component {
 
         // complete function ...
         storage
-          .ref('users/photos')
+          .ref(`usersPhotos/${idUser}/`)
           .child(image.name)
           .getDownloadURL()
           .then((image) => {
@@ -119,9 +120,6 @@ class Profile extends Component {
 
     };
 
-   // const photo = users ? users.photo : "https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/users%2Fphotos%2Felsa.jpg?alt=media&token=24f74390-4cf8-40ff-83a3-368778be42f3";
-
-    // className="rounded-circle"
     return (
       <div className="animated fadeIn">
         <Row className="justify-content-center">

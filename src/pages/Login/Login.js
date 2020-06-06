@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import { firestoreConnect } from 'react-redux-firebase';
 import { startUi } from './ui';
 import {
@@ -11,23 +10,12 @@ import {
   Container,
   Form,
 } from 'reactstrap';
-import { CardHeader } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
 
 class LoginPhone extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     startUi('#firebaseui-auth-container');
   }
-  // login = () => {
-  //   const { firebase } = this.props;
-  //   startUi('#firebaseui-auth-container');
-
-  // };
 
   render() {
     return (
@@ -46,19 +34,13 @@ class LoginPhone extends Component {
                         <div id='firebaseui-auth-container'></div>
                         <div id="loader">Loading...</div>
                       </Form>
-                      {/*<br/>
-                                             <p>You don't have any account 
-                                                <NavLink to="/register">Sign Up</NavLink>
-                                            </p> */}
                     </CardBody>
-
                   </Card>
                 </CardGroup>
               </Col>
             </Row>
           </Container>
         </div>
-
       </div >
     )
   }
