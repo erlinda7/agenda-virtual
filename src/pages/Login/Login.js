@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import { firestoreConnect } from 'react-redux-firebase';
 import { startUi } from './ui';
 import {
@@ -11,14 +10,8 @@ import {
   Container,
   Form,
 } from 'reactstrap';
-import { CardHeader } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
 
 class LoginPhone extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     startUi('#firebaseui-auth-container');

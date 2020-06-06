@@ -10,7 +10,7 @@ const user = async (uid) => {
     .get()
     .then(function (doc) {
       if (doc.exists) {
-        console.log('document data', doc.data());
+        //console.log('document data', doc.data());
         userExits = true;
       } else {
         console.log('no such document');
@@ -64,13 +64,14 @@ const db = async (currentUser) => {
         )
     }
     window.location.assign('/dashboard');
+  }else{
+    window.location.assign('/dashboard');
   }
 }
 
 let uiConfig = {
   callbacks: {
     signInSuccess: async function (currentUser, credential, redirectUrl) {
-
       db(currentUser);
 
        return false;
