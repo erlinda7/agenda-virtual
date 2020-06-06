@@ -11,11 +11,7 @@ class VirtualAgenda extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //currentUser: this.props.firebase.,
       users: false,
-      //nameUsers:false,
-      //photoUsers:'',
-      //control: true,
     }
   }
 
