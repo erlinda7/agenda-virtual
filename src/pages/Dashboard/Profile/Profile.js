@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StyledDropzone from '../../../components/StyledDropzone';
 import Loader from 'react-loader-spinner';
+import firebase from '../../../config/firebaseConfig';
 import {
   Button,
   Card,
@@ -119,9 +120,6 @@ class Profile extends Component {
 
     };
 
-   // const photo = users ? users.photo : "https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/users%2Fphotos%2Felsa.jpg?alt=media&token=24f74390-4cf8-40ff-83a3-368778be42f3";
-
-    // className="rounded-circle"
     return (
       <div className="animated fadeIn">
         <Row className="justify-content-center">

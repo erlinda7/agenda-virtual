@@ -23,11 +23,6 @@ class LoginPhone extends Component {
   componentDidMount() {
     startUi('#firebaseui-auth-container');
   }
-  // login = () => {
-  //   const { firebase } = this.props;
-  //   startUi('#firebaseui-auth-container');
-
-  // };
 
   render() {
     return (
@@ -46,19 +41,13 @@ class LoginPhone extends Component {
                         <div id='firebaseui-auth-container'></div>
                         <div id="loader">Loading...</div>
                       </Form>
-                      {/*<br/>
-                                             <p>You don't have any account 
-                                                <NavLink to="/register">Sign Up</NavLink>
-                                            </p> */}
                     </CardBody>
-
                   </Card>
                 </CardGroup>
               </Col>
             </Row>
           </Container>
         </div>
-
       </div >
     )
   }
