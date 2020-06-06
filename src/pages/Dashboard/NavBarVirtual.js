@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import firebase from '../../config/firebaseConfig';
 import {
   Collapse,
@@ -15,10 +15,10 @@ const NavBarVirtual = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const close = () =>{
-    firebase.auth().signOut().then(function() {
+  const close = () => {
+    firebase.auth().signOut().then(function () {
       // Sign-out successful.
-    }).catch(function(error) {
+    }).catch(function (error) {
       // An error happened.
     });
   }
