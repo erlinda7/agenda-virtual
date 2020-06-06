@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Contacts from './Contacts/Contacts';
 import Profile from './Profile/Profile';
+import firebase from '../../config/firebaseConfig';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -72,8 +74,13 @@ export default function ContanierVirtual(props) {
   };
   const font = {
     fontSize: 14,
-    textAlign:'center'
+    textAlign: 'center'
   }
+
+  const uid = firebase.auth().currentUser.uid;
+  const user = props.users ? props.users.filter((item) => item.id === uid) : {}
+  const name = props.users ? user[0].name : '';
+  const photo = props.users ? user[0].photo : '';
 
   return (
     <div>
@@ -83,8 +90,8 @@ export default function ContanierVirtual(props) {
           <br />
           <Tabs>
             <div>
-              <img style={bannerStyle} src={props.photoUsers} alt="photo" className="rounded-circle" />
-              <p style={font}>{props.nameUsers}</p>
+              <img style={bannerStyle} src={photo} alt="photo" className="rounded-circle" />
+              <p style={font}>{name}</p>
             </div>
           </Tabs>
           <br />

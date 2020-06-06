@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StyledDropzone from '../../../components/StyledDropzone';
 import Loader from 'react-loader-spinner';
-import firebase from '../../../config/firebaseConfig';
 import {
   Button,
   Card,
