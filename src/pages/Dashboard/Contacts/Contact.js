@@ -45,11 +45,12 @@ class Contact extends Component {
   handleUpload = (e) => {
     //canUpload(false);
     const { contacts } = this.state;
+    const idContact = contacts.userId;
     this.setState({ upload: false });
     const image = e;
     const storage = this.props.firebase.storage();
     const uploadTask = storage
-      .ref(`contacts/photos/${image.name}`)
+      .ref(`contactsPhotos/${idContact}/${image.name}`)
       .put(image);
     uploadTask.on(
       'state_changed',
@@ -67,7 +68,7 @@ class Contact extends Component {
 
         // complete function ...
         storage
-          .ref('contacts/photos')
+          .ref(`contactsPhotos/${idContact}/`)
           .child(image.name)
           .getDownloadURL()
           .then((image) => {
