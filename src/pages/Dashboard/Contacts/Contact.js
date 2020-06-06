@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -25,6 +26,7 @@ class Contact extends Component {
       contacts: false,
       editMode: !this.props.match.params.id.includes('new'),
       upload: true,
+      namePhoto: false,
     };
   }
 
@@ -45,9 +47,9 @@ class Contact extends Component {
   handleUpload = (e) => {
     //canUpload(false);
     const { contacts } = this.state;
-    const idContact = contacts.userId;
-    this.setState({ upload: false });
+    const idContact = this.props.match.params.id;
     const image = e;
+    this.setState({ upload: false, namePhoto: image.name });
     const storage = this.props.firebase.storage();
     const uploadTask = storage
       .ref(`contactsPhotos/${idContact}/${image.name}`)
@@ -96,6 +98,7 @@ class Contact extends Component {
         { collection: 'contacts', doc: contactId },
         {
           ...contacts,
+          namePhoto: this.state.namePhoto,
         },
       );
       this.props.history.push('/dashboard/');
@@ -114,14 +117,24 @@ class Contact extends Component {
   };
 
   deleteContact() {
-    confirmDelete(() => {
+    confirmDelete(async () => {
       const firebase = this.props.firestore;
       const contactId = this.props.match.params.id;
+      const {contacts} =this.state;
       firebase.delete({ collection: 'contacts', doc: contactId });
+      const storage = this.props.firebase.storage().ref();
+      await storage
+       .child(`contactsPhotos/${contactId}/${contacts.namePhoto}`)
+        .delete()
+        .then(()=>console.log('contact photo delete'))
+        .catch((error)=>console.log(error));
+
       this.props.history.push('/dashboard');
     });
   }
   render() {
+    console.log('photoname', this.state.namePhoto);
+    
     const {
       contacts,
       upload,
