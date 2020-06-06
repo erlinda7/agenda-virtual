@@ -48,49 +48,48 @@ class VirtualAgenda extends Component {
       };
     } return null;
   }
+componentWillUnmount =async()=>{
+  const { users, currentUser } = this.state;
+  const { firestore } = this.props;
+  const name = currentUser.displayName;
+  const email = currentUser.email;
+  const telephone = currentUser.phoneNumber;
+  const uid = currentUser.uid;
+  const providerId = currentUser.providerData[0].providerId;
+  console.log('current', currentUser);
+  console.log('provider', currentUser.providerData[0].providerId);
 
-  componentDidUpdate = async () => {
-    const { users, currentUser } = this.state;
-    const { firestore } = this.props;
-    const name = currentUser.displayName;
-    const email = currentUser.email;
-    const telephone = currentUser.phoneNumber;
-    const uid = currentUser.uid;
-    const providerId = currentUser.providerData[0].providerId;
-    console.log('current', currentUser);
-    console.log('provider', currentUser.providerData[0].providerId);
-
-    if (users === 'notExists') {
-      console.log('user db', this.state.users);
-      if (providerId === 'phone') {
-        await firestore.set(
-          { collection: 'users', doc: uid },
-          {
-            name:'',
-            email:'',
-            telephone,
-            uid,
-            adress:'',
-            photo:"https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/photoDefault%2Fphoto_.jpg?alt=media&token=7521d6fb-f361-4b1f-b221-313d5e310aaa",
-          }
-        )
-      }
-      if (providerId === 'google.com') {
-        await firestore.set(
-          { collection: 'users', doc: uid },
-          {
-            name,
-            email,
-            telephone:'',
-            uid,
-            adress:'',
-            photo:"https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/photoDefault%2Fphoto_.jpg?alt=media&token=7521d6fb-f361-4b1f-b221-313d5e310aaa",
-          }
-        )
-      }
+  if (users === 'notExists') {
+    console.log('user db', this.state.users);
+    if (providerId === 'phone') {
+      await firestore.set(
+        { collection: 'users', doc: uid },
+        {
+          name:'',
+          email:'',
+          telephone,
+          uid,
+          adress:'',
+          photo:"https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/photoDefault%2Fphoto_.jpg?alt=media&token=7521d6fb-f361-4b1f-b221-313d5e310aaa",
+        }
+      )
     }
-
+    if (providerId === 'google.com') {
+      await firestore.set(
+        { collection: 'users', doc: uid },
+        {
+          name,
+          email,
+          telephone:'',
+          uid,
+          adress:'',
+          photo:"https://firebasestorage.googleapis.com/v0/b/agendavirtual-f818c.appspot.com/o/photoDefault%2Fphoto_.jpg?alt=media&token=7521d6fb-f361-4b1f-b221-313d5e310aaa",
+        }
+      )
+    }
   }
+
+}
 
   render() {
     console.log('name',this.state.nameUsers);
