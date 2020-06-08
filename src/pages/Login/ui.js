@@ -63,9 +63,9 @@ const db = async (currentUser) => {
           }
         )
     }
-    window.location.assign('/dashboard');
+    window.location.assign('/');
   }else{
-    window.location.assign('/dashboard');
+    window.location.assign('/');
   }
 }
 

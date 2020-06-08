@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 import Login from './pages/Login/Login';
-import Home from './containers/Home';
-import VirtualAgenda from './pages/Dashboard/VirtualAgenda';
+import Home from './containers/Home/Home';
+import VirtualAgenda from './containers/AgendaVirtual/VirtualAgenda';
 import Contact from './pages/Dashboard/Contacts/Contact';
 
 class App extends Component {
@@ -21,8 +21,7 @@ class App extends Component {
               </Switch>
               :
               <Switch>
-                <Route exact path="/dashboard" render={props => <VirtualAgenda {...props} />} />
-
+                <Route exact path="/" render={props => <VirtualAgenda {...props} />} />
                 <Route path="/contacts/:id" render={props => <Contact {...props} />} />
               </Switch>
           }

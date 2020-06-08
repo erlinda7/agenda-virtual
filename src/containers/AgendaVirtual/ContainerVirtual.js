@@ -6,8 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Contacts from './Contacts/Contacts';
-import Profile from './Profile/Profile';
+import Contacts from '../../pages/Dashboard/Contacts/Contacts';
+import Profile from '../../pages/Dashboard/Profile/Profile';
 import firebase from '../../config/firebaseConfig';
 
 function TabPanel(props) {
@@ -116,8 +116,7 @@ export default function ContanierVirtual(props) {
               <Profile />
             </TabPanel>
             <TabPanel value={value} index={1}>
-
-              <Contacts />
+              <Contacts/>
             </TabPanel>
             <TabPanel value={value} index={2}>
               blocked contacts
